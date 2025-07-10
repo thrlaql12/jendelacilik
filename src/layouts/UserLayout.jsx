@@ -72,7 +72,6 @@ const [avatarUrl, setAvatarUrl] = useState('/avatar-default.png');
         />
 
 {/* Icon Profil + Nama User + Logout */}
-{/* Icon Profil + Nama User */} 
 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
   <Avatar
     src={avatarUrl}
@@ -99,26 +98,8 @@ const [avatarUrl, setAvatarUrl] = useState('/avatar-default.png');
     </span>
   )}
 
-  {/* HAPUS ATAU KOMENTARI BAGIAN INI
-  <Button
-    type="text"
-    icon={<LogoutOutlined />}
-    onClick={() => {
-      logout();
-      navigate('/');
-    }}
-    style={{
-      color: 'var(--color-text)',
-      fontWeight: 'bold',
-      backgroundColor: 'transparent',
-      border: 'none',
-    }}
-  >
-    Keluar
-  </Button>
-  */}
+  
 </div>
-
 
 
       </Header>
@@ -136,15 +117,66 @@ const [avatarUrl, setAvatarUrl] = useState('/avatar-default.png');
         {children}
       </Content>
 
-      <Footer
-        style={{
-          textAlign: 'center',
-          backgroundColor: 'var(--color-footer)',
-          color: 'var(--color-text)',
-        }}
-      >
-        © 2025 JendelaCilik - Dunia Belajar Anak
-      </Footer>
+<Footer
+  style={{
+    backgroundColor: 'var(--color-header)',
+    color: '#f0f0f0',
+    padding: '40px 60px',
+  }}
+>
+  <div
+    style={{
+      display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'space-between',
+      marginBottom: '24px',
+      gap: '24px',
+    }}
+  >
+    {/* Kolom 1: Tentang Kami */}
+    <div style={{ flex: 1, minWidth: 200 }}>
+      <h4 style={{ color: '#fff' }}>Tentang Kami</h4>
+      <p style={{ color: '#fff' }}>
+        Website ini dikembangkan oleh kelompok <strong>KOI</strong> untuk memenuhi fantasi masa kecil dan mengedukasi anak-anak menggunakan gadget dengan cara yang benar dan menyenangkan.
+      </p>
+    </div>
+
+    {/* Kolom 2: Kontak Kami */}
+<div style={{ flex: 1, minWidth: 220, marginLeft: '150px' }}>
+  <h4 style={{ color: '#fff' }}>Kontak Kami</h4>
+<ul style={{ listStyle: 'none', padding: 0, margin: 0, color: '#fff' }}>
+  <li style={{ marginBottom: '8px' }}>
+    📞 <a href="tel:+6282136953197" style={{ color: '#fff', textDecoration: 'none' }}>
+      (+62) 821-3695-3197
+    </a>
+  </li>
+  <li style={{ marginBottom: '8px' }}>
+    ✉ <a href="mailto:ikankoi@gmail.com" style={{ color: '#fff', textDecoration: 'none' }}>
+      ikankoi@gmail.com
+    </a>
+  </li>
+  <li>
+    📍 Sanctuary
+  </li>
+</ul>
+</div>
+
+
+    {/* Kolom 3: JendelaCilik Info */}
+    <div style={{ flex: 1, minWidth: 200 }}>
+      <h4 style={{ color: '#fff' }}>JendelaCilik</h4>
+      <p style={{ color: '#fff' }}>
+        Aplikasi belajar anak dengan fitur interaktif dan konten edukatif untuk mendukung perkembangan si kecil secara menyenangkan dan aman.
+      </p>
+    </div>
+  </div>
+
+  <div style={{ textAlign: 'center', color: '#fff', fontSize: '12px' }}>
+    © 2025 JendelaCilik — Made with Love from KOI 💗
+  </div>
+</Footer>
+
+
     </Layout>
   );
 };
