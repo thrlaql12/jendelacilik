@@ -1,4 +1,3 @@
-// src/pages/user/Profile.jsx
 import React, { useState } from "react";
 import {
   Typography,
@@ -13,6 +12,16 @@ import {
 } from "antd";
 import { UploadOutlined, LogoutOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+
+// Pastikan kamu punya fungsi logout
+// Misalnya kalau ada di context atau helper file:
+// import { logout } from "../../utils/auth";
+const logout = () => {
+  // Hapus token / session
+  localStorage.removeItem("authToken");
+  console.log("Logout!");
+  message.success("Anda telah logout.");
+};
 
 const { Title, Text } = Typography;
 
@@ -51,7 +60,6 @@ const Profile = () => {
   const handleSubmitProfile = (values) => {
     console.log("Data profil pengguna:", values);
     message.success("Profil berhasil diperbarui!");
-    // Kirim ke backend
   };
 
   const handleSubmitPassword = (values) => {
@@ -65,14 +73,12 @@ const Profile = () => {
   };
 
   const handleLogout = () => {
-    // Hapus token/auth jika ada
-    console.log("Logout!");
-    message.success("Anda telah logout.");
-    navigate("/login");
+    logout();
+    navigate("/");
   };
 
   return (
-    <div style={{ padding: 24, position: "relative", minHeight: "100vh" }}>
+    <div style={{ padding: 24, minHeight: "100vh" }}>
       <Title level={2}>👤 Profil Saya</Title>
 
       <Card>
@@ -192,20 +198,16 @@ const Profile = () => {
       </Card>
 
       {/* Tombol Logout */}
-      <Button
-        type="primary"
-        danger
-        icon={<LogoutOutlined />}
-        onClick={handleLogout}
-        style={{
-          position: "fixed",
-          bottom: 24,
-          right: 24,
-          zIndex: 1000,
-        }}
-      >
-        Logout
-      </Button>
+      <div style={{ textAlign: "center", marginTop: 32 }}>
+        <Button
+          type="primary"
+          danger
+          icon={<LogoutOutlined />}
+          onClick={handleLogout}
+        >
+          Logout
+        </Button>
+      </div>
     </div>
   );
 };

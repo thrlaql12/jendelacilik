@@ -1,6 +1,29 @@
 .dashboard-container {
   padding: 32px;
-  background-color: var(--color-background);
+  min-height: 100vh;
+  background-image: url("/images/backgoundall.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  position: relative;
+}
+
+/* Tambahan overlay putih lembut agar konten tetap terlihat */
+.dashboard-container::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+  z-index: 0;
+}
+
+.dashboard-header,
+.dashboard-stats,
+.quick-actions {
+  position: relative; /* agar tidak tertutup overlay */
+  z-index: 1;
 }
 
 .dashboard-header {
@@ -10,11 +33,13 @@
 
 .dashboard-header h1 {
   font-size: 28px;
-  background: var(--color-primary);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
+  color: #ff6b6b; /* Merah ceria */
+}
+
+.dashboard-header p {
+  font-size: 16px;
+  color: #333;
+  margin-top: 8px;
 }
 
 .dashboard-stats {
@@ -25,23 +50,28 @@
 }
 
 .stat-card {
-  background-color: var(--color-card);
+  background-color: rgba(255, 255, 255, 0.85); /* Putih transparan */
   padding: 20px;
   border-radius: 16px;
   text-align: center;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: scale(1.03);
 }
 
 .stat-card h3 {
   margin: 0;
   font-size: 22px;
-  color: var(--color-text);
+  color: #4caf50; /* Hijau segar */
 }
 
 .stat-card p {
   margin-top: 8px;
   font-size: 16px;
-  color: #666;
+  color: #666; /* Tetap abu-abu netral */
 }
 
 .quick-actions {
@@ -49,8 +79,8 @@
 }
 
 .quick-actions button {
-  background-color: rgb(169, 217, 231);
-  color: #404040;
+  background-color: #ff6b6b; /* Merah ceria */
+  color: #ffffff;
   border: none;
   padding: 10px 20px;
   font-weight: bold;
@@ -62,5 +92,5 @@
 
 .quick-actions button:hover {
   transform: translateY(-2px);
-  opacity: 0.95;
+  background-color: #e55b5b; /* Merah lebih gelap saat hover */
 }

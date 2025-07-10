@@ -14,11 +14,11 @@ import { useAuth } from '../context/AuthContext';
 const { Header, Content, Footer } = Layout;
 
 const UserLayout = ({ children }) => {
-  const { logout, user } = useAuth();
-  const navigate = useNavigate();
-  const location = useLocation();
+const { logout, user } = useAuth();
+const navigate = useNavigate();
+const location = useLocation();
 
-  const [avatarUrl, setAvatarUrl] = useState('/avatar-default.png');
+const [avatarUrl, setAvatarUrl] = useState('/avatar-default.png');
 
   useEffect(() => {
     if (user?.avatar) {
@@ -71,35 +71,52 @@ const UserLayout = ({ children }) => {
           }))}
         />
 
-        {/* Icon Profil + Logout */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <Avatar
-            src={avatarUrl}
-            icon={!user?.avatar && <UserOutlined />}
-            style={{
-              cursor: 'pointer',
-              border: '2px solid var(--color-text)',
-              backgroundColor: '#fff',
-            }}
-            onClick={() => navigate('/user/profile')}
-          />
-          <Button
-            type="text"
-            icon={<LogoutOutlined />}
-            onClick={() => {
-              logout();
-              navigate('/');
-            }}
-            style={{
-              color: 'var(--color-text)',
-              fontWeight: 'bold',
-              backgroundColor: 'transparent',
-              border: 'none',
-            }}
-          >
-            Keluar
-          </Button>
-        </div>
+{/* Icon Profil + Nama User + Logout */}
+<div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+  <Avatar
+    src={avatarUrl}
+    icon={!user?.avatar && <UserOutlined />}
+    style={{
+      cursor: 'pointer',
+      border: '2px solid var(--color-text)',
+      backgroundColor: '#fff',
+    }}
+    onClick={() => navigate('/user/profile')}
+  />
+
+  {user && user.username && (
+    <span
+      onClick={() => navigate('/user/profile')}
+      style={{
+        color: 'var(--color-text)',
+        fontWeight: 'bold',
+        cursor: 'pointer',
+        textDecoration: 'none',
+      }}
+    >
+      {user.username}
+    </span>
+  )}
+
+  <Button
+    type="text"
+    icon={<LogoutOutlined />}
+    onClick={() => {
+      logout();
+      navigate('/');
+    }}
+    style={{
+      color: 'var(--color-text)',
+      fontWeight: 'bold',
+      backgroundColor: 'transparent',
+      border: 'none',
+    }}
+  >
+    Keluar
+  </Button>
+</div>
+
+
       </Header>
 
       <Content
