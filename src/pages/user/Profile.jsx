@@ -9,15 +9,12 @@ import {
   Radio,
   message,
   Divider,
+  Modal,
 } from "antd";
 import { UploadOutlined, LogoutOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 
-// Pastikan kamu punya fungsi logout
-// Misalnya kalau ada di context atau helper file:
-// import { logout } from "../../utils/auth";
 const logout = () => {
-  // Hapus token / session
   localStorage.removeItem("authToken");
   console.log("Logout!");
   message.success("Anda telah logout.");
@@ -72,9 +69,17 @@ const Profile = () => {
     passwordForm.resetFields();
   };
 
-  const handleLogout = () => {
-    logout();
-    navigate("/");
+  const showLogoutConfirm = () => {
+    Modal.confirm({
+      title: "Konfirmasi Logout",
+      content: "Apakah Anda yakin ingin keluar?",
+      okText: "Ya, Logout",
+      cancelText: "Batal",
+      onOk() {
+        logout();
+        navigate("/");
+      },
+    });
   };
 
   return (
@@ -160,11 +165,7 @@ const Profile = () => {
       <Divider />
 
       <Card title="🔒 Ubah Password">
-        <Form
-          layout="vertical"
-          form={passwordForm}
-          onFinish={handleSubmitPassword}
-        >
+        <Form layout="vertical" form={passwordForm} onFinish={handleSubmitPassword}>
           <Form.Item
             label="Password Lama"
             name="currentPassword"
@@ -203,7 +204,7 @@ const Profile = () => {
           type="primary"
           danger
           icon={<LogoutOutlined />}
-          onClick={handleLogout}
+          onClick={showLogoutConfirm}
         >
           Logout
         </Button>

@@ -1,69 +1,115 @@
-import React from 'react';
-import { Button, Form, Input, Select, Typography, message, Card } from 'antd';
+import React, { useState } from 'react';
+import { Button, Form, Input, Typography, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../context/AuthContext';
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const Register = () => {
+  const { login } = useAuth(); // Langsung login setelah registrasi
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const onFinish = (values) => {
-    message.success('Registrasi berhasil! Silakan login.');
-    navigate('/');
+    setLoading(true);
+    setTimeout(() => {
+      if (values.username && values.password) {
+        const userData = {
+          username: values.username,
+        };
+        login(userData);
+        message.success('Registrasi berhasil!');
+        navigate('/user/home');
+      } else {
+        message.error('Mohon isi semua field');
+      }
+      setLoading(false);
+    }, 1000);
   };
 
   return (
-    <div style={{
-      minHeight: '100vh',
-      backgroundColor: '#DFF6FF', // Ocean background 🌊
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}>
-      <Card style={{
-        width: 380,
-        backgroundColor: '#BCE6F1', // Card biru laut 💧
-        borderRadius: 16,
-        boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
-        border: 'none'
-      }}>
-        <Title level={3} style={{ textAlign: 'center', color: '#445566' }}>
-          Daftar Akun Baru 🌊
+    <div
+      style={{
+        height: '100vh',
+        width: '100%',
+        backgroundImage: `url('/images/backlogin.jpg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        fontFamily: `'Poppins', sans-serif`,
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: 'rgba(255, 255, 255, 0.2)',
+          backdropFilter: 'blur(10px)',
+          WebkitBackdropFilter: 'blur(10px)',
+          padding: '40px',
+          borderRadius: '16px',
+          boxShadow: '0 6px 24px rgba(0,0,0,0.2)',
+          width: '100%',
+          maxWidth: 400,
+          border: '1px solid rgba(255, 255, 255, 0.3)',
+        }}
+      >
+        <Title level={2} style={{ fontWeight: 700, marginBottom: 0, textAlign: 'center' }}>
+          DAFTAR AKUN BARU
         </Title>
+        <Text type="secondary" style={{ display: 'block', marginBottom: 32, textAlign: 'center' }}>
+          Silakan isi formulir di bawah ini untuk mendaftar.
+        </Text>
+
         <Form layout="vertical" onFinish={onFinish}>
-          <Form.Item name="email" label="Email" rules={[{ required: true }]}>
-            <Input placeholder="email kamu" />
+          <Form.Item
+            name="username"
+            label="Nama Pengguna"
+            rules={[{ required: true, message: 'Masukkan nama pengguna' }]}
+          >
+            <Input size="large" placeholder="Nama Anda" />
           </Form.Item>
-          <Form.Item name="password" label="Password" rules={[{ required: true }]}>
-            <Input.Password placeholder="buat password" />
+
+          <Form.Item
+            name="password"
+            label="Kata Sandi"
+            rules={[{ required: true, message: 'Masukkan kata sandi' }]}
+          >
+            <Input.Password size="large" placeholder="********" />
           </Form.Item>
-          <Form.Item name="role" label="Daftar sebagai" rules={[{ required: true }]}>
-            <Select placeholder="Pilih role">
-              <Select.Option value="admin">Admin</Select.Option>
-              <Select.Option value="user">Pengguna</Select.Option>
-            </Select>
-          </Form.Item>
+
           <Form.Item>
             <Button
-              htmlType="submit"
               type="primary"
+              htmlType="submit"
+              loading={loading}
+              size="large"
               style={{
-                background: 'linear-gradient(90deg, #77B6EA, #BCE6F1)', // 🌈 Tombol ocean
-                border: 'none',
                 width: '100%',
-                color: '#fff',
-                fontWeight: 'bold',
-                borderRadius: 8
+                backgroundColor: '#1677d4',
+                border: 'none',
+                borderRadius: 8,
               }}
             >
               Daftar
             </Button>
           </Form.Item>
-          <Form.Item style={{ textAlign: 'center' }}>
-            Sudah punya akun? <a href="/" style={{ color: '#FF9A8B' }}>Login sekarang</a>
-          </Form.Item>
+
+          <div style={{ marginTop: 24, textAlign: 'center' }}>
+            <Text type="secondary">Sudah punya akun? </Text>
+            <span
+              onClick={() => navigate('/login')}
+              style={{
+                color: '#1677d4',
+                cursor: 'pointer',
+                textDecoration: 'underline',
+              }}
+            >
+              Masuk di sini
+            </span>
+          </div>
         </Form>
-      </Card>
+      </div>
     </div>
   );
 };

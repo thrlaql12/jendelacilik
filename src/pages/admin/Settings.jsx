@@ -65,21 +65,7 @@ const Settings = () => {
         </Form>
       </Card>
 
-      <Card>
-        <Title level={4}>🔔 Notifikasi</Title>
-        <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-          <Text>Aktifkan notifikasi komentar baru</Text>
-          <Switch
-            checked={notificationsEnabled}
-            onChange={(checked) => {
-              setNotificationsEnabled(checked);
-              message.success(
-                `Notifikasi ${checked ? "diaktifkan" : "dinonaktifkan"}`
-              );
-            }}
-          />
-        </div>
-      </Card>
+      
 
       <Divider />
       <Text type="secondary">Versi Aplikasi: 1.0.0</Text>

@@ -1,6 +1,6 @@
 // src/router/index.jsx
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import Login from '../pages/shared/Login';
 import Register from '../pages/shared/Register';
@@ -17,7 +17,6 @@ import Comments from '../pages/admin/Comments';
 import Settings from '../pages/admin/Settings';
 import ProfileAdmin from '../pages/admin/ProfileAdmin';
 
-
 import Home from '../pages/user/Home';
 import Playlist from '../pages/user/Playlist';
 import Books from '../pages/user/Books';
@@ -27,7 +26,8 @@ const AppRoutes = () => {
   return (
     <Routes>
       {/* Shared */}
-      <Route path="/" element={<Login />} />
+      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/about" element={<About />} />
 

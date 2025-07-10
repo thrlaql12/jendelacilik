@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Menu, Avatar } from 'antd';
+import { Layout, Menu, Avatar, Modal } from 'antd';
 import {
   DashboardOutlined,
   VideoCameraOutlined,
@@ -27,12 +27,24 @@ const AdminLayout = ({ children }) => {
     { key: 'logout', icon: <LogoutOutlined />, label: 'Keluar', action: 'logout' },
   ];
 
+  const showLogoutConfirm = () => {
+    Modal.confirm({
+      title: 'Konfirmasi Keluar',
+      content: 'Apakah Anda yakin ingin keluar?',
+      okText: 'Ya, keluar',
+      cancelText: 'Batal',
+      onOk() {
+        logout();
+        navigate('/');
+      },
+    });
+  };
+
   const handleMenuClick = ({ key }) => {
     const selected = menuItems.find(item => item.key === key);
     if (selected?.action === 'logout') {
-      logout();
-      navigate('/');
-    } else {
+      showLogoutConfirm();
+    } else if (selected?.path) {
       navigate(selected.path);
     }
   };

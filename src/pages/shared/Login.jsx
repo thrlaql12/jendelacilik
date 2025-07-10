@@ -61,7 +61,7 @@ const Login = () => {
   }}
 >
         <Title level={2} style={{ fontWeight: 700, marginBottom: 0, textAlign: 'center' }}>
-          SELAMAT DATANG KEMBALI
+          SELAMAT DATANG!
         </Title>
         <Text type="secondary" style={{ display: 'block', marginBottom: 32, textAlign: 'center' }}>
           Silakan masuk untuk melanjutkan.
@@ -102,7 +102,7 @@ const Login = () => {
               size="large"
               style={{
                 width: '100%',
-                backgroundColor: '#f04747',
+                backgroundColor: '#1677d4',
                 border: 'none',
                 borderRadius: 8,
               }}
@@ -113,7 +113,7 @@ const Login = () => {
 
           <div style={{ marginTop: 24, textAlign: 'center' }}>
             <Text type="secondary">Belum punya akun? </Text>
-            <a href="/register" style={{ color: '#f04747' }}>Daftar sekarang!</a>
+            <a href="/register" style={{ color: '#1677d4' }}>Daftar sekarang!</a>
           </div>
         </Form>
       </div>
