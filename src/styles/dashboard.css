@@ -1,0 +1,66 @@
+.dashboard-container {
+  padding: 32px;
+  background-color: var(--color-background);
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.dashboard-header h1 {
+  font-size: 28px;
+  background: var(--color-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  background-color: var(--color-card);
+  padding: 20px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.stat-card h3 {
+  margin: 0;
+  font-size: 22px;
+  color: var(--color-text);
+}
+
+.stat-card p {
+  margin-top: 8px;
+  font-size: 16px;
+  color: #666;
+}
+
+.quick-actions {
+  text-align: center;
+}
+
+.quick-actions button {
+  background-color: rgb(169, 217, 231);
+  color: #404040;
+  border: none;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 12px;
+  margin: 0 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.quick-actions button:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}

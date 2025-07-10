@@ -1,0 +1,104 @@
+/* src/styles/home.css */
+.home-container {
+  padding: 24px;
+  min-height: 100vh;
+  color: var(--color-text);
+  /* Tambahkan latar belakang ceria */
+  background: url('/backgron.jpg') repeat;
+  background-size: cover;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.home-header {
+  background-color: #ff6b6b;
+  padding: 12px 24px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.home-header h1 {
+  margin: 0;
+  font-size: 32px;
+  color: #ffffff;
+}
+
+.home-intro {
+  margin-top: 24px;
+  font-size: 18px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.section-preview {
+  margin-top: 32px;
+  background: rgba(255,255,255,0.85);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.section-title-row {
+  margin-bottom: 12px;
+  font-weight: bold;
+  font-size: 18px;
+  color: #ff6b6b;
+}
+
+.preview-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.preview-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 12px;
+  flex-grow: 1;
+}
+
+.preview-card {
+  background-color: #ffe082;
+  height: 100px;
+  border-radius: 12px;
+  transition: transform 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.preview-card:hover {
+  transform: scale(1.05);
+}
+
+.arrow-button {
+  margin-left: 12px;
+  background-color: #ffffff;
+  border: 2px solid #ff6b6b;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  color: #ff6b6b;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.arrow-button:hover {
+  background-color: #ff6b6b;
+  color: #ffffff;
+}
+
+.comment-section {
+  margin-top: 48px;
+  padding: 20px;
+  background-color: rgba(255,255,255,0.9);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.comment-section h2 {
+  color: #4caf50;
+}
