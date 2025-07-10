@@ -9,15 +9,15 @@ import {
   Col,
   Card,
   Modal,
-  Space,
   message,
 } from "antd";
 import {
   EditOutlined,
   DeleteOutlined,
-  VideoCameraOutlined,
   PlusOutlined,
 } from "@ant-design/icons";
+
+import '../../styles/managevideos.css'; // Pastikan path ini sesuai dengan struktur folder kamu
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -71,19 +71,13 @@ export default function ManageVideos() {
   };
 
   return (
-    <div style={{ padding: "24px" }}>
+    <div className="manage-videos-container">
       <Title level={2}>🎬 Kelola Video Anak</Title>
 
       <Form
         form={form}
         layout="vertical"
         onFinish={handleSubmit}
-        style={{
-          backgroundColor: "#f4faff",
-          padding: "24px",
-          borderRadius: "12px",
-          marginBottom: "32px",
-        }}
       >
         <Title level={4}>{editingId ? "Edit Video" : "Tambah Video Baru"}</Title>
 
@@ -166,11 +160,6 @@ export default function ManageVideos() {
                     alt={video.play_name}
                     src={video.play_thumbnail}
                     onClick={() => handlePreview(video.play_thumbnail)}
-                    style={{
-                      height: 160,
-                      objectFit: "cover",
-                      cursor: "pointer",
-                    }}
                   />
                 }
                 actions={[

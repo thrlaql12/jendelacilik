@@ -16,9 +16,10 @@ import {
   EditOutlined,
   DeleteOutlined,
   FilePdfOutlined,
-  BookOutlined,
   UploadOutlined,
 } from "@ant-design/icons";
+
+import '../../styles/managebooks.css'; // Import CSS sesuai lokasi
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -91,19 +92,13 @@ export default function ManageBooks() {
   };
 
   return (
-    <div style={{ padding: "24px" }}>
+    <div className="manage-books-container">
       <Title level={2}>📚 Kelola Buku Cerita</Title>
 
       <Form
         form={form}
         layout="vertical"
         onFinish={handleSubmit}
-        style={{
-          backgroundColor: "#f4faff",
-          padding: "24px",
-          borderRadius: "12px",
-          marginBottom: "32px",
-        }}
       >
         <Title level={4}>{editingId ? "Edit Buku" : "Tambah Buku Baru"}</Title>
 

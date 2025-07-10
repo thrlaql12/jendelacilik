@@ -4,7 +4,7 @@
   min-height: 100vh;
   color: var(--color-text);
   /* Tambahkan latar belakang ceria */
-  background: url('/backgron.jpg') repeat;
+  background: url('/images/homeback.jpg') repeat;
   background-size: cover;
   font-family: 'Comic Sans MS', cursive, sans-serif;
 }

@@ -1,4 +1,3 @@
-// src/pages/admin/Settings.jsx
 import React, { useState } from "react";
 import {
   Typography,
@@ -10,6 +9,7 @@ import {
   Form,
   message,
 } from "antd";
+import "../../styles/managesettings.css"; // Import file CSS
 
 const { Title, Text } = Typography;
 
@@ -29,11 +29,10 @@ const Settings = () => {
   };
 
   return (
-    <div style={{ padding: "24px" }}>
+    <div className="manage-settings-container">
       <Title level={2}>⚙️ Pengaturan Admin</Title>
 
-      {/* Ganti Password */}
-      <Card style={{ marginBottom: 24 }}>
+      <Card>
         <Title level={4}>🔐 Ganti Password</Title>
         <Form layout="vertical" form={passwordForm} onFinish={handlePasswordChange}>
           <Form.Item
@@ -66,7 +65,6 @@ const Settings = () => {
         </Form>
       </Card>
 
-      {/* Notifikasi */}
       <Card>
         <Title level={4}>🔔 Notifikasi</Title>
         <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>

@@ -3,7 +3,7 @@ import { Button, Form, Input, Select, Typography, message } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const Login = () => {
   const { login } = useAuth();
@@ -34,85 +34,88 @@ const Login = () => {
   };
 
   return (
-    <div style={{
-      display: 'flex',
-      height: '100vh',
-      width: '100%',
-      backgroundColor: '#749BC2'
-    }}>
-      {/* KIRI: Gambar ilustrasi */}
-      <div style={{
-        flex: 1,
-        backgroundColor: '#91C8E4',
+    <div
+      style={{
+        height: '100vh',
+        width: '100%',
+        backgroundImage: `url('/images/backlogin.jpg')`, // GANTI dengan gambar sesuai kamu
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-      }}>
-        <img
-          src="../../images/00035-2442792675.png" // <== GANTI sesuai path gambar kamu
-          alt="Login Illustration"
-          style={{ width: '80%', maxWidth: 1000 }}
-        />
-      </div>
+        fontFamily: `'Poppins', sans-serif`,
+      }}
+    >
+      <div
+  style={{
+    backgroundColor: 'rgba(255, 255, 255, 0.2)', // transparan
+    backdropFilter: 'blur(10px)',                // efek blur latar belakang
+    WebkitBackdropFilter: 'blur(10px)',          // untuk Safari
+    padding: '40px',
+    borderRadius: '16px',
+    boxShadow: '0 6px 24px rgba(0,0,0,0.2)',
+    width: '100%',
+    maxWidth: 400,
+    border: '1px solid rgba(255, 255, 255, 0.3)', // garis halus putih transparan
+  }}
+>
+        <Title level={2} style={{ fontWeight: 700, marginBottom: 0, textAlign: 'center' }}>
+          SELAMAT DATANG KEMBALI
+        </Title>
+        <Text type="secondary" style={{ display: 'block', marginBottom: 32, textAlign: 'center' }}>
+          Silakan masuk untuk melanjutkan.
+        </Text>
 
-      {/* KANAN: Form login */}
-      <div style={{
-        flex: 1,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        padding: '0 0px',
-      }}>
-        <div style={{
-          width: '100%',
-          maxWidth: 400,
-          backgroundColor: '#ffffff',
-          borderRadius: 16,
-          boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-          padding: 32,
-        }}>
-          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 16 }}>
-            <img src="/images/00808-3997947721.png" alt="Logo" style={{ height: 50 }} />
+        <Form layout="vertical" onFinish={onFinish}>
+          <Form.Item name="email" label="Email" rules={[{ required: true, message: 'Masukkan email Anda' }]}>
+            <Input size="large" placeholder="contoh@email.com" />
+          </Form.Item>
+          <Form.Item name="password" label="Kata Sandi" rules={[{ required: true, message: 'Masukkan kata sandi' }]}>
+            <Input.Password size="large" placeholder="********" />
+          </Form.Item>
+          <Form.Item name="role" label="Masuk sebagai" rules={[{ required: true, message: 'Pilih peran' }]}>
+            <Select size="large" placeholder="Pilih peran Anda">
+              <Select.Option value="admin">Admin</Select.Option>
+              <Select.Option value="user">Pengguna</Select.Option>
+            </Select>
+          </Form.Item>
+
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: 16,
+          }}>
+            <label>
+              <input type="checkbox" style={{ marginRight: 6 }} />
+              Ingat saya
+            </label>
+            <a href="#" style={{ fontSize: 14 }}>Lupa kata sandi</a>
           </div>
-          <Title level={3} style={{ textAlign: 'center', color: '#005bbb' }}>
-            Welcome back!
-          </Title>
-          <p style={{ textAlign: 'center', marginBottom: 24 }}>Please sign in to continue.</p>
-          <Form layout="vertical" onFinish={onFinish}>
-            <Form.Item name="email" label="Email" rules={[{ required: true }]}>
-              <Input placeholder="contoh@mail.com" />
-            </Form.Item>
-            <Form.Item name="password" label="Password" rules={[{ required: true }]}>
-              <Input.Password placeholder="••••••••" />
-            </Form.Item>
-            <Form.Item name="role" label="Login sebagai" rules={[{ required: true }]}>
-              <Select placeholder="Pilih role">
-                <Select.Option value="admin">Admin</Select.Option>
-                <Select.Option value="user">Pengguna</Select.Option>
-              </Select>
-            </Form.Item>
-            <Form.Item>
-              <Button
-                htmlType="submit"
-                type="primary"
-                loading={loading}
-                style={{
-                  background: 'linear-gradient(90deg, #77B6EA, #BCE6F1)',
-                  border: 'none',
-                  color: 'white',
-                  width: '100%',
-                  fontWeight: 'bold',
-                  borderRadius: 8,
-                }}
-              >
-                Masuk
-              </Button>
-            </Form.Item>
-            <Form.Item style={{ textAlign: 'center' }}>
-              Belum punya akun? <a href="/register" style={{ color: '#FF9A8B' }}>Daftar di sini</a>
-            </Form.Item>
-          </Form>
-        </div>
+
+          <Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              loading={loading}
+              size="large"
+              style={{
+                width: '100%',
+                backgroundColor: '#f04747',
+                border: 'none',
+                borderRadius: 8,
+              }}
+            >
+              Masuk
+            </Button>
+          </Form.Item>
+
+          <div style={{ marginTop: 24, textAlign: 'center' }}>
+            <Text type="secondary">Belum punya akun? </Text>
+            <a href="/register" style={{ color: '#f04747' }}>Daftar sekarang!</a>
+          </div>
+        </Form>
       </div>
     </div>
   );

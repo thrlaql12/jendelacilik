@@ -1,4 +1,3 @@
-// src/pages/admin/Comments.jsx
 import React, { useState } from 'react';
 import {
   List,
@@ -8,6 +7,8 @@ import {
   Typography,
   notification,
 } from 'antd';
+
+import '../../styles/managecomments.css'; // Import CSS
 
 const { Title, Text } = Typography;
 
@@ -43,7 +44,7 @@ const Comments = () => {
   };
 
   return (
-    <div style={{ padding: 24 }}>
+    <div className="manage-comments-container">
       <Title level={2}>💬 Kelola Komentar Pengguna</Title>
 
       {comments.length === 0 ? (

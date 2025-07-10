@@ -72,6 +72,7 @@ const [avatarUrl, setAvatarUrl] = useState('/avatar-default.png');
         />
 
 {/* Icon Profil + Nama User + Logout */}
+{/* Icon Profil + Nama User */} 
 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
   <Avatar
     src={avatarUrl}
@@ -98,6 +99,7 @@ const [avatarUrl, setAvatarUrl] = useState('/avatar-default.png');
     </span>
   )}
 
+  {/* HAPUS ATAU KOMENTARI BAGIAN INI
   <Button
     type="text"
     icon={<LogoutOutlined />}
@@ -114,7 +116,9 @@ const [avatarUrl, setAvatarUrl] = useState('/avatar-default.png');
   >
     Keluar
   </Button>
+  */}
 </div>
+
 
 
       </Header>

@@ -1,7 +1,13 @@
 import React from 'react';
+import '../../styles/books.css'; // pastikan path-nya benar
 
 const Books = () => {
-  return <h1>Daftar Buku Cerita</h1>;
+  return (
+    <div className="books-container">
+      <h1 className="books-title">📚 Daftar Buku Cerita</h1>
+      {/* Konten lainnya */}
+    </div>
+  );
 };
 
 export default Books;
